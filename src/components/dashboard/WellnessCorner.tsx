@@ -8,7 +8,7 @@ export function WellnessCorner() {
     <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
-          <HeartPulse className="h-5 w-5 text-red-500" />
+          <HeartPulse className="h-5 w-5 text-accent" />
           {wellnessTip.title}
         </CardTitle>
       </CardHeader>
