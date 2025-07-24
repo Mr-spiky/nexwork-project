@@ -33,7 +33,7 @@ import {
 } from '@/components/ui/sheet';
 import { ThemeToggle } from './ThemeToggle';
 import { user } from '@/lib/data';
-import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { useState, useEffect } from 'react';
 
 const notifications = [
@@ -162,7 +162,7 @@ export function Header() {
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
                 <Avatar>
-                  <AvatarImage src={user.avatar} alt={`@${user.name}`} />
+                  <AvatarImage src={user.avatar} alt={`@${user.name}`} data-ai-hint="user profile" />
                   <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <span className="sr-only">Toggle user menu</span>
@@ -188,7 +188,7 @@ export function Header() {
           <div className="space-y-6">
             <div className="flex items-center gap-4 py-4">
               <Avatar className="h-20 w-20">
-                <AvatarImage src={user.avatar} alt={`@${user.name}`} />
+                <AvatarImage src={user.avatar} alt={`@${user.name}`} data-ai-hint="user profile" />
                 <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
               </Avatar>
               <div>

@@ -15,7 +15,7 @@ export function TeamSpotlight() {
       </CardHeader>
       <CardContent className="flex flex-col items-center text-center">
         <Avatar className="h-24 w-24 mb-4">
-          <AvatarImage src={teamSpotlight.photo} alt={teamSpotlight.name} />
+          <AvatarImage src={teamSpotlight.photo} alt={teamSpotlight.name} data-ai-hint="employee portrait" />
           <AvatarFallback>{teamSpotlight.name.charAt(0)}</AvatarFallback>
         </Avatar>
         <h3 className="text-lg font-semibold">{teamSpotlight.name}</h3>

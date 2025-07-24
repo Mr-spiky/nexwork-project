@@ -37,7 +37,7 @@ export function CompanyNews() {
                 className="aspect-video w-full object-cover transition-transform group-hover:scale-105"
                 height="225"
                 src={article.image}
-                data-ai-hint="office work"
+                data-ai-hint={article.id === 'n1' ? 'award ceremony' : 'data analytics'}
                 width="400"
               />
             </div>
