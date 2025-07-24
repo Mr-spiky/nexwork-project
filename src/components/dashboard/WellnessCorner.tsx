@@ -1,11 +1,11 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { wellnessTip } from '@/lib/data';
-import { HeartPulse, Play, Pause, RefreshCw } from 'lucide-react';
+import { wellnessTips } from '@/lib/data';
+import { HeartPulse, Play, Pause } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 export function WellnessCorner() {
@@ -13,6 +13,10 @@ export function WellnessCorner() {
   const [timeLeft, setTimeLeft] = useState(MEDITATION_DURATION);
   const [isMeditating, setIsMeditating] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+
+  const wellnessTip = useMemo(() => {
+    return wellnessTips[Math.floor(Math.random() * wellnessTips.length)];
+  }, []);
 
   useEffect(() => {
     if (isMeditating && !isPaused && timeLeft > 0) {
@@ -95,7 +99,7 @@ export function WellnessCorner() {
               )}
               {isMeditating ? (timeLeft === 0 ? 'Start Again' : isPaused ? 'Resume' : 'Pause') : wellnessTip.actionLabel}
         </Button>
-        {isMeditating && timeLeft > 0 && (
+        {isMeditating && (
               <Button
                 variant="ghost"
                 className="text-muted-foreground"

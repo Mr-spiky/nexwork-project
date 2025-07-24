@@ -50,3 +50,9 @@ export interface Poll {
   question: string;
   options: PollOption[];
 }
+
+export interface WellnessTip {
+    title: string;
+    quote: string;
+    actionLabel: string;
+}

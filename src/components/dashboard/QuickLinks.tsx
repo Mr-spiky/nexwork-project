@@ -9,7 +9,7 @@ export function QuickLinks() {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <Link className="h-5 w-5" />
-          Quick Links
+          Your Handy Shortcuts
         </CardTitle>
       </CardHeader>
       <CardContent className="grid grid-cols-2 sm:grid-cols-3 gap-2">
@@ -17,7 +17,7 @@ export function QuickLinks() {
           <Button
             key={link.id}
             variant="outline"
-            className="flex flex-col h-20 sm:h-24 justify-center items-center gap-1"
+            className="flex flex-col h-20 sm:h-24 justify-center items-center gap-1 hover:bg-primary/5 dark:hover:bg-primary/10"
             asChild
           >
             <a href={link.href}>

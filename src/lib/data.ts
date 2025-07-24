@@ -5,6 +5,7 @@ import type {
   QuickLink,
   UpcomingEvent,
   Poll,
+  WellnessTip
 } from './types';
 import {
   Briefcase,
@@ -129,12 +130,29 @@ export const upcomingEvents: UpcomingEvent[] = [
   },
 ];
 
-export const wellnessTip = {
-  title: 'Daily Wellness Tip',
-  quote:
-    '"Take a 5-minute break every hour to stretch and rest your eyes. Your body will thank you."',
-  actionLabel: 'Start 2-Min Meditation',
-};
+export const wellnessTips: WellnessTip[] = [
+  {
+    title: 'Daily Wellness Tip',
+    quote:
+      'Take a 5-minute break every hour to stretch and rest your eyes. Your body will thank you.',
+    actionLabel: 'Start 2-Min Meditation',
+  },
+  {
+    title: 'A Little Encouragement',
+    quote: 'Believe you can and you\'re halfway there.',
+    actionLabel: 'Start 2-Min Meditation',
+  },
+  {
+    title: 'Mindful Moment',
+    quote: 'The present moment is filled with joy and happiness. If you are attentive, you will see it.',
+    actionLabel: 'Start 2-Min Meditation',
+  },
+    {
+    title: 'Positive Vibes Only',
+    quote: 'Keep your face always toward the sunshine—and shadows will fall behind you.',
+    actionLabel: 'Start 2-Min Meditation',
+  },
+];
 
 export const quickPoll: Poll = {
   id: 'p1',
