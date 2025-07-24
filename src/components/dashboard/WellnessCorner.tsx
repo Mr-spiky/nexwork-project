@@ -1,3 +1,4 @@
+
 'use client';
 
 import { useState, useEffect } from 'react';
@@ -5,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/componen
 import { Button } from '@/components/ui/button';
 import { wellnessTip } from '@/lib/data';
 import { HeartPulse, Play, Pause, RefreshCw } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 export function WellnessCorner() {
   const MEDITATION_DURATION = 120; // 2 minutes in seconds
@@ -23,6 +25,10 @@ export function WellnessCorner() {
   }, [isMeditating, isPaused, timeLeft]);
 
   const toggleMeditation = () => {
+    if (timeLeft === 0) {
+      resetMeditation();
+      return;
+    }
     if (!isMeditating) {
       setIsMeditating(true);
       setIsPaused(false);
@@ -46,62 +52,57 @@ export function WellnessCorner() {
   };
 
   return (
-    <Card>
+    <Card className={cn(
+        "transition-all duration-500",
+        isMeditating && "bg-primary/10 dark:bg-primary/5"
+    )}>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <HeartPulse className="h-5 w-5 text-accent" />
           {wellnessTip.title}
         </CardTitle>
       </CardHeader>
-      <CardContent>
+      <CardContent className="min-h-[8rem] flex items-center justify-center">
         {!isMeditating ? (
-          <p className="text-muted-foreground italic">{wellnessTip.quote}</p>
+            <p className="text-muted-foreground italic text-center">
+                "{wellnessTip.quote}"
+            </p>
         ) : (
-          <div className="flex flex-col items-center justify-center text-center h-24">
+          <div className="flex flex-col items-center justify-center text-center">
             {timeLeft > 0 ? (
               <>
-                <p className="text-5xl font-bold font-mono tabular-nums">
+                <p className="text-6xl font-bold font-mono tabular-nums text-primary">
                   {formatTime(timeLeft)}
                 </p>
-                <p className="text-muted-foreground mt-2">
+                <p className="text-muted-foreground mt-2 tracking-widest uppercase text-sm">
                   {isPaused ? 'Paused' : 'Breathe...'}
                 </p>
               </>
             ) : (
-              <p className="text-lg font-semibold">
-                Well done! You've completed your meditation.
+              <p className="text-xl font-semibold text-primary">
+                Nicely done!
               </p>
             )}
           </div>
         )}
       </CardContent>
-      <CardFooter className="flex gap-2">
-        {timeLeft > 0 ? (
-          <>
-            <Button className="w-full" onClick={toggleMeditation}>
-              {isMeditating && !isPaused ? (
-                <Pause className="mr-2 h-4 w-4" />
+      <CardFooter className="flex flex-col gap-2">
+         <Button className="w-full" onClick={toggleMeditation} size="lg">
+              {isMeditating && !isPaused && timeLeft > 0 ? (
+                <Pause className="mr-2 h-5 w-5" />
               ) : (
-                <Play className="mr-2 h-4 w-4" />
+                <Play className="mr-2 h-5 w-5" />
               )}
-              {isMeditating ? (isPaused ? 'Resume' : 'Pause') : wellnessTip.actionLabel}
-            </Button>
-            {isMeditating && (
+              {isMeditating ? (timeLeft === 0 ? 'Start Again' : isPaused ? 'Resume' : 'Pause') : wellnessTip.actionLabel}
+        </Button>
+        {isMeditating && timeLeft > 0 && (
               <Button
-                variant="outline"
-                size="icon"
+                variant="ghost"
+                className="text-muted-foreground"
                 onClick={resetMeditation}
-                aria-label="Reset Timer"
               >
-                <RefreshCw className="h-4 w-4" />
+                Reset
               </Button>
-            )}
-          </>
-        ) : (
-          <Button className="w-full" onClick={resetMeditation}>
-            <RefreshCw className="mr-2 h-4 w-4" />
-            Start Again
-          </Button>
         )}
       </CardFooter>
     </Card>
