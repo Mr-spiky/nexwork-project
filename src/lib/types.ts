@@ -56,3 +56,13 @@ export interface WellnessTip {
     quote: string;
     actionLabel: string;
 }
+
+export interface SmartSuggestion {
+    id: string;
+    emoji: string;
+    text: string;
+    link?: {
+        label: string;
+        href: string;
+    }
+}
