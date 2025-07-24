@@ -32,6 +32,8 @@ export interface TeamMember {
   role: string;
   photo: string;
   funFact: string;
+  birthday?: string;
+  workAnniversary?: string;
 }
 
 export interface QuickLink {

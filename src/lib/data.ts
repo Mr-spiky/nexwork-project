@@ -20,7 +20,7 @@ import {
 
 export const user: User = {
   name: 'Alex',
-  avatar: 'https://placehold.co/100x100/A7C7E7/333333',
+  avatar: 'https://placehold.co/100x100.png',
   role: 'Software Engineer',
   department: 'Technology',
   team: 'Project Phoenix',
@@ -62,7 +62,7 @@ export const news: NewsArticle[] = [
       "We're thrilled to announce that NexWork has been awarded the 'Top Workplace' award for its outstanding company culture and employee satisfaction...",
     author: 'HR Department',
     date: '3 days ago',
-    image: 'https://placehold.co/600x400/E6E6FA/333333',
+    image: 'https://placehold.co/600x400.png',
   },
   {
     id: 'n2',
@@ -71,15 +71,17 @@ export const news: NewsArticle[] = [
       'The engineering team has launched a new internal tool, "Insight," to help teams make data-driven decisions faster and more efficiently.',
     author: 'Tech Blog',
     date: 'Last week',
-    image: 'https://placehold.co/600x400/D4F1F4/333333',
+    image: 'https://placehold.co/600x400.png',
   },
 ];
 
 export const teamSpotlight: TeamMember = {
   name: 'Maria Garcia',
   role: 'Lead UX Designer',
-  photo: 'https://placehold.co/150x150/F8B88B/333333',
+  photo: 'https://placehold.co/150x150.png',
   funFact: '"I can solve a Rubik\'s Cube in under a minute!"',
+  birthday: 'Happy Birthday!',
+  workAnniversary: 'Celebrating 5 years!',
 };
 
 export const quickLinks: QuickLink[] = [
