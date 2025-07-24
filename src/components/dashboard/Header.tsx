@@ -33,9 +33,19 @@ import { user } from '@/lib/data';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 import { useState, useEffect } from 'react';
 
+const notifications = [
+    "You have a new message from a colleague.",
+    "Reminder: Team meeting at 2 PM.",
+    "Your expense report has been approved.",
+    "Company-wide announcement: New policy update.",
+    "Your IT support ticket has been resolved."
+];
+
 export function Header() {
   const [currentDate, setCurrentDate] = useState('');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [hasNotification, setHasNotification] = useState(true);
+  const [notification, setNotification] = useState('');
 
   useEffect(() => {
     const date = new Date();
@@ -46,7 +56,12 @@ export function Header() {
       day: 'numeric',
     };
     setCurrentDate(date.toLocaleDateString('en-US', options));
+    setNotification(notifications[Math.floor(Math.random() * notifications.length)]);
   }, []);
+
+  const handleNotificationClick = () => {
+    setHasNotification(false);
+  };
 
   return (
     <>
@@ -102,10 +117,26 @@ export function Header() {
             </div>
           </form>
           <ThemeToggle />
-          <Button variant="ghost" size="icon" className="rounded-full">
-            <Bell className="h-5 w-5" />
-            <span className="sr-only">Toggle notifications</span>
-          </Button>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" size="icon" className="rounded-full relative" onClick={handleNotificationClick}>
+                <Bell className="h-5 w-5" />
+                {hasNotification && (
+                  <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500"></span>
+                )}
+                <span className="sr-only">Toggle notifications</span>
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Notifications</DropdownMenuLabel>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem className="flex flex-col items-start gap-2 whitespace-normal">
+                  <p className="font-medium">New Notification</p>
+                  <p className="text-sm text-muted-foreground">{notification}</p>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
