@@ -1,21 +1,23 @@
 
 'use client';
 
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { wellnessTips } from '@/lib/data';
 import { HeartPulse, Play, Pause } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { Skeleton } from '../ui/skeleton';
 
 export function WellnessCorner() {
   const MEDITATION_DURATION = 120; // 2 minutes in seconds
   const [timeLeft, setTimeLeft] = useState(MEDITATION_DURATION);
   const [isMeditating, setIsMeditating] = useState(false);
   const [isPaused, setIsPaused] = useState(false);
+  const [wellnessTip, setWellnessTip] = useState<{ title: string; quote: string; actionLabel: string; } | null>(null);
 
-  const wellnessTip = useMemo(() => {
-    return wellnessTips[Math.floor(Math.random() * wellnessTips.length)];
+  useEffect(() => {
+    setWellnessTip(wellnessTips[Math.floor(Math.random() * wellnessTips.length)]);
   }, []);
 
   useEffect(() => {
@@ -29,6 +31,7 @@ export function WellnessCorner() {
   }, [isMeditating, isPaused, timeLeft]);
 
   const toggleMeditation = () => {
+    if (!wellnessTip) return;
     if (timeLeft === 0) {
       resetMeditation();
       return;
@@ -63,14 +66,21 @@ export function WellnessCorner() {
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
           <HeartPulse className="h-5 w-5 text-accent" />
-          {wellnessTip.title}
+          {wellnessTip ? wellnessTip.title : <Skeleton className="h-6 w-36" />}
         </CardTitle>
       </CardHeader>
       <CardContent className="min-h-[8rem] flex items-center justify-center">
         {!isMeditating ? (
-            <p className="text-muted-foreground italic text-center">
-                "{wellnessTip.quote}"
-            </p>
+            wellnessTip ? (
+              <p className="text-muted-foreground italic text-center">
+                  "{wellnessTip.quote}"
+              </p>
+            ) : (
+               <div className="flex flex-col items-center gap-2 w-full">
+                <Skeleton className="h-4 w-11/12" />
+                <Skeleton className="h-4 w-10/12" />
+              </div>
+            )
         ) : (
           <div className="flex flex-col items-center justify-center text-center">
             {timeLeft > 0 ? (
@@ -91,13 +101,13 @@ export function WellnessCorner() {
         )}
       </CardContent>
       <CardFooter className="flex flex-col gap-2">
-         <Button className="w-full" onClick={toggleMeditation} size="lg">
+         <Button className="w-full" onClick={toggleMeditation} size="lg" disabled={!wellnessTip}>
               {isMeditating && !isPaused && timeLeft > 0 ? (
                 <Pause className="mr-2 h-5 w-5" />
               ) : (
                 <Play className="mr-2 h-5 w-5" />
               )}
-              {isMeditating ? (timeLeft === 0 ? 'Start Again' : isPaused ? 'Resume' : 'Pause') : wellnessTip.actionLabel}
+              {wellnessTip ? (isMeditating ? (timeLeft === 0 ? 'Start Again' : isPaused ? 'Resume' : 'Pause') : wellnessTip.actionLabel) : 'Loading...'}
         </Button>
         {isMeditating && (
               <Button
