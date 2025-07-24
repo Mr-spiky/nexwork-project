@@ -5,6 +5,9 @@ import {
   Menu,
   Mountain,
   Search,
+  Mail,
+  Briefcase,
+  Users,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -159,19 +162,35 @@ export function Header() {
         </div>
       </header>
       <Dialog open={isProfileOpen} onOpenChange={setIsProfileOpen}>
-        <DialogContent>
+        <DialogContent className="sm:max-w-md">
           <DialogHeader>
             <DialogTitle>Profile Details</DialogTitle>
-            <DialogDescription>Your personal information.</DialogDescription>
+            <DialogDescription>Your personal and professional information.</DialogDescription>
           </DialogHeader>
-          <div className="flex items-center gap-4 py-4">
-            <Avatar className="h-20 w-20">
-              <AvatarImage src={user.avatar} alt={`@${user.name}`} />
-              <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
-            </Avatar>
-            <div>
-              <p className="text-lg font-semibold">{user.name}</p>
-              <p className="text-sm text-muted-foreground">Employee</p>
+          <div className="space-y-6">
+            <div className="flex items-center gap-4 py-4">
+              <Avatar className="h-20 w-20">
+                <AvatarImage src={user.avatar} alt={`@${user.name}`} />
+                <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+              </Avatar>
+              <div>
+                <p className="text-2xl font-bold">{user.name}</p>
+                <p className="text-md text-muted-foreground">{user.department}</p>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
+                <div className="flex items-center gap-2">
+                    <Briefcase className="h-4 w-4 text-muted-foreground" />
+                    <span>{user.role}</span>
+                </div>
+                <div className="flex items-center gap-2">
+                    <Users className="h-4 w-4 text-muted-foreground" />
+                    <span>Team: {user.team}</span>
+                </div>
+                 <div className="flex items-center gap-2 sm:col-span-2">
+                    <Mail className="h-4 w-4 text-muted-foreground" />
+                    <a href={`mailto:${user.email}`} className="text-primary hover:underline">{user.email}</a>
+                </div>
             </div>
           </div>
         </DialogContent>

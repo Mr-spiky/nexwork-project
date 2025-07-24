@@ -7,6 +7,7 @@ import type {
   Poll,
   WellnessTip,
   SmartSuggestion,
+  User,
 } from './types';
 import {
   Briefcase,
@@ -17,9 +18,13 @@ import {
   Users,
 } from 'lucide-react';
 
-export const user = {
+export const user: User = {
   name: 'Alex',
   avatar: 'https://placehold.co/100x100',
+  role: 'Software Engineer',
+  department: 'Technology',
+  team: 'Project Phoenix',
+  email: 'alex.doe@nexwork.com',
 };
 
 export const meetings: Meeting[] = [

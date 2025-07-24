@@ -1,5 +1,14 @@
 import type { LucideIcon } from 'lucide-react';
 
+export interface User {
+  name: string;
+  avatar: string;
+  role: string;
+  department: string;
+  team: string;
+  email: string;
+}
+
 export interface Meeting {
   id: string;
   title: string;
@@ -40,7 +49,7 @@ export interface UpcomingEvent {
 }
 
 export interface PollOption {
-  id: string;
+  id:string;
   text: string;
   votes: number;
 }
