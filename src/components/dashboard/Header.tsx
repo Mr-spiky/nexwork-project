@@ -41,7 +41,12 @@ const notifications = [
     "Reminder: Team meeting at 2 PM.",
     "Your expense report has been approved.",
     "Company-wide announcement: New policy update.",
-    "Your IT support ticket has been resolved."
+    "Your IT support ticket has been resolved.",
+    "Your PTO request for next month has been approved.",
+    "Don't forget to complete your mandatory compliance training.",
+    "A new blog post is up on the company's tech blog.",
+    "Happy work anniversary!",
+    "The weekly newsletter is now available."
 ];
 
 export function Header() {
