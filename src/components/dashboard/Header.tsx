@@ -54,6 +54,7 @@ export function Header() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [hasNotification, setHasNotification] = useState(true);
   const [notification, setNotification] = useState('');
+  const [greeting, setGreeting] = useState('');
 
   useEffect(() => {
     const date = new Date();
@@ -65,6 +66,15 @@ export function Header() {
     };
     setCurrentDate(date.toLocaleDateString('en-US', options));
     setNotification(notifications[Math.floor(Math.random() * notifications.length)]);
+
+    const hours = date.getHours();
+    if (hours < 12) {
+      setGreeting(`Good Morning, ${user.name}!`);
+    } else if (hours < 18) {
+      setGreeting(`Good Afternoon, ${user.name}!`);
+    } else {
+      setGreeting(`Good Evening, ${user.name}!`);
+    }
   }, []);
 
   const handleNotificationClick = () => {
@@ -106,13 +116,16 @@ export function Header() {
         <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
           <div className="ml-auto flex-1 sm:flex-initial">
             <div className="hidden md:block">
-              <h2 className="text-lg font-semibold">Good Morning, {user.name}!</h2>
+              <h2 className="text-lg font-semibold">{greeting}</h2>
               <p className="text-sm text-muted-foreground">{currentDate}</p>
             </div>
           </div>
           <div className="hidden lg:flex items-center gap-2 text-muted-foreground">
             <CloudSun className="h-5 w-5" />
-            <span>72°F Sunny</span>
+            <div className="flex flex-col">
+              <span>72°F Sunny</span>
+              <span className="text-xs">It’s sunny today — perfect for a quick walk!</span>
+            </div>
           </div>
           <form className="ml-auto flex-1 sm:flex-initial">
             <div className="relative">
