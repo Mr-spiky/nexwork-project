@@ -1,9 +1,34 @@
 'use client';
 import { Lightbulb } from 'lucide-react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { smartSuggestions } from '@/lib/data';
+import { useState, useEffect } from 'react';
+import { generateSuggestion, SuggestionOutput } from '@/ai/flows/suggestion-flow';
+import { Skeleton } from '../ui/skeleton';
 
-export function SmartSuggestions() {
+
+export function SmartSuggestions({ meetingCount }: { meetingCount: number }) {
+  const [suggestion, setSuggestion] = useState<SuggestionOutput | null>(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    async function getSuggestion() {
+      setLoading(true);
+      try {
+        const result = await generateSuggestion({ meetingCount });
+        setSuggestion(result);
+      } catch (error) {
+        console.error("Failed to fetch suggestion:", error);
+        // Fallback suggestion
+        setSuggestion({
+            suggestion: 'Remember to take breaks and stay hydrated!',
+            emoji: '💧'
+        });
+      }
+      setLoading(false);
+    }
+    getSuggestion();
+  }, [meetingCount]);
+
   return (
     <Card>
       <CardHeader>
@@ -13,21 +38,22 @@ export function SmartSuggestions() {
         </CardTitle>
       </CardHeader>
       <CardContent>
-        <ul className="space-y-3">
-          {smartSuggestions.map((suggestion) => (
-            <li key={suggestion.id} className="flex items-start gap-3 p-3 rounded-lg bg-secondary/50">
+        {loading ? (
+            <div className="flex items-start gap-3 p-3">
+                <Skeleton className="h-7 w-7 rounded-full" />
+                <div className='space-y-2 w-full'>
+                    <Skeleton className="h-4 w-11/12" />
+                    <Skeleton className="h-4 w-4/12" />
+                </div>
+            </div>
+        ) : suggestion && (
+            <div className="flex items-start gap-3 p-3 rounded-lg bg-secondary/50">
               <div className="text-2xl pt-px">{suggestion.emoji}</div>
               <div>
-                <p className="font-medium">{suggestion.text}</p>
-                {suggestion.link && (
-                  <a href={suggestion.link.href} className="text-sm text-primary hover:underline">
-                    {suggestion.link.label}
-                  </a>
-                )}
+                <p className="font-medium">{suggestion.suggestion}</p>
               </div>
-            </li>
-          ))}
-        </ul>
+            </div>
+        )}
       </CardContent>
     </Card>
   );

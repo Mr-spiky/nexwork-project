@@ -6,7 +6,6 @@ import type {
   UpcomingEvent,
   Poll,
   WellnessTip,
-  SmartSuggestion,
   User,
 } from './types';
 import {
@@ -172,25 +171,3 @@ export const quickPoll: Poll = {
     { id: 'po4', text: 'Healthy Salads', votes: 15 },
   ],
 };
-
-export const smartSuggestions: SmartSuggestion[] = [
-    {
-        id: 'ss1',
-        emoji: '🧘‍♀️',
-        text: 'Your next break is in 30 mins — how about a quick stretch?',
-    },
-    {
-        id: 'ss2',
-        emoji: '🎯',
-        text: 'Based on your meetings, you might want to review the Q3 goals.',
-        link: {
-            label: 'Click here to review!',
-            href: '#'
-        }
-    },
-     {
-        id: 'ss3',
-        emoji: '🥗',
-        text: 'Time for a healthy lunch! Consider grabbing a salad today.',
-    },
-];
