@@ -57,7 +57,7 @@ export function ChatWidget() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
-            className="absolute bottom-20 right-0"
+            className="absolute bottom-16 right-0"
         >
             <Card className="w-[350px] h-[500px] flex flex-col shadow-2xl rounded-2xl">
               <CardHeader className="flex flex-row items-center justify-between bg-primary text-primary-foreground rounded-t-2xl p-4">
