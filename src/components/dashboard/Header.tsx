@@ -2,12 +2,8 @@
 'use client';
 import {
   Bell,
-  Menu,
   Mountain,
   Search,
-  Mail,
-  Briefcase,
-  Users,
   CloudSun,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -27,15 +23,11 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@/components/ui/dialog';
-import {
-  Sheet,
-  SheetContent,
-  SheetTrigger,
-} from '@/components/ui/sheet';
 import { ThemeToggle } from './ThemeToggle';
 import { user } from '@/lib/data';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { useState, useEffect } from 'react';
+import { format } from 'date-fns';
 
 const notifications = [
     "You have a new message from a colleague.",
@@ -54,9 +46,11 @@ export function Header() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [hasNotification, setHasNotification] = useState(true);
   const [notification, setNotification] = useState('');
+  const [currentDate, setCurrentDate] = useState('');
 
   useEffect(() => {
     setNotification(notifications[Math.floor(Math.random() * notifications.length)]);
+    setCurrentDate(format(new Date(), 'EEEE, MMMM d, yyyy'));
   }, []);
 
   const handleNotificationClick = () => {
@@ -65,38 +59,21 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-[#5B21B6] px-4 dark:bg-background md:px-6">
-        <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-          <a
+      <header className="sticky top-0 z-30 flex h-20 items-center gap-4 border-b bg-background px-4 md:px-6">
+        <a
             href="#"
-            className="flex items-center gap-2 text-lg font-semibold text-white dark:text-foreground md:text-base"
+            className="flex items-center gap-2 text-lg font-semibold text-foreground"
           >
             <Mountain className="h-6 w-6" />
-            <span className="sr-only">NexWork</span>
-          </a>
-        </nav>
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant="outline" size="icon" className="shrink-0 md:hidden">
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle navigation menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="left">
-            <nav className="grid gap-6 text-lg font-medium">
-              <a
-                href="#"
-                className="flex items-center gap-2 text-lg font-semibold"
-              >
-                <Mountain className="h-6 w-6" />
-                <span className="sr-only">NexWork</span>
-              </a>
-              {/* Mobile nav links can go here if needed */}
-            </nav>
-          </SheetContent>
-        </Sheet>
-        <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-          <form className="ml-auto flex-1 sm:flex-initial">
+            <span>NexWork</span>
+        </a>
+        <div className="hidden md:flex flex-col items-start ml-6">
+            <h1 className="text-xl font-bold text-foreground">Good Morning, Alex!</h1>
+            <p className="text-sm text-muted-foreground">{currentDate}</p>
+        </div>
+
+        <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4 justify-end">
+          <form className="flex-initial">
             <div className="relative">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
@@ -109,7 +86,7 @@ export function Header() {
           <ThemeToggle />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="relative rounded-full text-white hover:bg-white/20 hover:text-white dark:text-foreground dark:hover:bg-accent dark:hover:text-accent-foreground" onClick={handleNotificationClick}>
+              <Button variant="ghost" size="icon" className="relative rounded-full" onClick={handleNotificationClick}>
                 <Bell className="h-5 w-5" />
                 {hasNotification && (
                   <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500"></span>
@@ -167,15 +144,15 @@ export function Header() {
             </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                 <div className="flex items-center gap-2">
-                    <Briefcase className="h-4 w-4 text-muted-foreground" />
+                    <span className="font-semibold">Role:</span>
                     <span>{user.role}</span>
                 </div>
                 <div className="flex items-center gap-2">
-                    <Users className="h-4 w-4 text-muted-foreground" />
-                    <span>Team: {user.team}</span>
+                    <span className="font-semibold">Team:</span>
+                    <span>{user.team}</span>
                 </div>
                  <div className="flex items-center gap-2 sm:col-span-2">
-                    <Mail className="h-4 w-4 text-muted-foreground" />
+                    <span className="font-semibold">Email:</span>
                     <a href={`mailto:${user.email}`} className="text-primary hover:underline">{user.email}</a>
                 </div>
             </div>
