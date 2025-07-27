@@ -1,25 +1,13 @@
 'use client';
 
-import { useState } from 'react';
 import Image from 'next/image';
-import { Card, CardContent, CardHeader, CardTitle, CardFooter, CardDescription } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { news } from '@/lib/data';
 import { Newspaper } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
-const reactions = ['👏', '🔥', '💡'];
-
 export function CompanyNews() {
-  const [selectedReactions, setSelectedReactions] = useState<Record<string, string | null>>({});
-
-  const handleReaction = (articleId: string, reaction: string) => {
-    setSelectedReactions(prev => ({
-      ...prev,
-      [articleId]: prev[articleId] === reaction ? null : reaction,
-    }));
-  };
-  
   return (
     <Card>
       <CardHeader>
@@ -50,20 +38,7 @@ export function CompanyNews() {
                 </div>
               </div>
               <div className="flex items-center gap-2 mt-4">
-                {reactions.map(emoji => (
-                  <Button
-                    key={emoji}
-                    variant="outline"
-                    size="sm"
-                    className={cn(
-                      "rounded-full transition-all duration-200",
-                      selectedReactions[article.id] === emoji ? 'bg-primary/20 border-primary' : 'hover:bg-primary/5'
-                    )}
-                    onClick={() => handleReaction(article.id, emoji)}
-                  >
-                    {emoji}
-                  </Button>
-                ))}
+                <Button variant="link" size="sm" className="p-0 h-auto">Read More</Button>
               </div>
             </div>
           </div>
