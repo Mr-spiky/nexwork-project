@@ -5,10 +5,17 @@ import Image from 'next/image';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { news } from '@/lib/data';
-import { Newspaper } from 'lucide-react';
+import { Newspaper, ThumbsUp, MessageSquare, Share2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useState } from 'react';
 
 export function CompanyNews() {
+  const [likes, setLikes] = useState({ n1: 12, n2: 8 });
+
+  const handleLike = (id: 'n1' | 'n2') => {
+    setLikes(prev => ({ ...prev, [id]: prev[id] + 1 }));
+  };
+
   return (
     <Card>
       <CardHeader>
@@ -17,7 +24,7 @@ export function CompanyNews() {
           Company News
         </CardTitle>
       </CardHeader>
-      <CardContent className="grid gap-6">
+      <CardContent className="grid gap-8">
         {news.map((article) => (
           <div key={article.id} className="grid grid-cols-1 md:grid-cols-3 gap-4 group">
             <div className="overflow-hidden rounded-lg md:col-span-1">
@@ -30,7 +37,7 @@ export function CompanyNews() {
                 width="400"
               />
             </div>
-            <div className="md:col-span-2 flex flex-col">
+            <div className="md:col-span-2 flex flex-col justify-between">
               <div>
                 <h3 className="text-lg font-semibold">{article.title}</h3>
                 <p className="text-sm text-muted-foreground mt-1">{article.summary}</p>
@@ -38,8 +45,19 @@ export function CompanyNews() {
                   <span>{article.author}</span> &middot; <span>{article.date}</span>
                 </div>
               </div>
-              <div className="flex items-center gap-2 mt-4">
-                <Button variant="link" size="sm" className="p-0 h-auto">Read More</Button>
+              <div className="flex items-center gap-4 mt-4">
+                <Button variant="ghost" size="sm" onClick={() => handleLike(article.id as 'n1' | 'n2')} className="flex items-center gap-1.5 text-muted-foreground">
+                  <ThumbsUp className="h-4 w-4" />
+                  <span>{likes[article.id as 'n1' | 'n2']}</span>
+                </Button>
+                <Button variant="ghost" size="sm" className="flex items-center gap-1.5 text-muted-foreground">
+                  <MessageSquare className="h-4 w-4" />
+                  <span>Comment</span>
+                </Button>
+                <Button variant="ghost" size="sm" className="flex items-center gap-1.5 text-muted-foreground">
+                  <Share2 className="h-4 w-4" />
+                  <span>Share</span>
+                </Button>
               </div>
             </div>
           </div>
