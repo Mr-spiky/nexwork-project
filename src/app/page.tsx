@@ -8,6 +8,7 @@ import { WellnessCorner } from '@/components/dashboard/WellnessCorner';
 import { QuickPoll } from '@/components/dashboard/QuickPoll';
 import { Footer } from '@/components/dashboard/Footer';
 import { SmartSuggestions } from '@/components/dashboard/SmartSuggestions';
+import { ChatWidget } from '@/components/dashboard/ChatWidget';
 import { meetings } from '@/lib/data';
 
 export default function Home() {
@@ -31,6 +32,7 @@ export default function Home() {
         </div>
       </main>
       <Footer />
+      <ChatWidget />
     </div>
   );
 }
