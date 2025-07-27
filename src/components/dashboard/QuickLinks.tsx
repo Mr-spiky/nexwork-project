@@ -17,7 +17,7 @@ export function QuickLinks() {
           <Button
             key={link.id}
             variant="outline"
-            className="flex flex-col h-20 sm:h-24 justify-center items-center gap-1 hover:bg-primary/5 dark:hover:bg-primary/10"
+            className="flex flex-col h-20 sm:h-24 justify-center items-center gap-1 hover:bg-primary/5 dark:hover:bg-primary/10 transition-all duration-200 ease-in-out hover:scale-105 hover:shadow-lg hover:border-primary/30"
             asChild
           >
             <a href={link.href}>
