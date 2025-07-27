@@ -58,18 +58,18 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b bg-card px-6 sm:px-8">
+      <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b bg-primary text-primary-foreground px-6 sm:px-8">
         <div className="flex items-center gap-4">
           <a
               href="#"
-              className="flex items-center gap-2 text-lg font-semibold text-foreground"
+              className="flex items-center gap-2 text-lg font-semibold"
             >
               <Mountain className="h-6 w-6" />
               <span className="sr-only sm:not-sr-only">NexWork</span>
           </a>
           <div className="flex flex-col items-start">
-            <h1 className="text-base font-bold text-foreground whitespace-nowrap">Good Morning, Alex!</h1>
-            <p className="text-xs text-muted-foreground whitespace-nowrap">{currentDate}</p>
+            <h1 className="text-base font-bold whitespace-nowrap">Good Morning, Alex!</h1>
+            <p className="text-xs whitespace-nowrap">{currentDate}</p>
           </div>
         </div>
         
@@ -80,14 +80,14 @@ export function Header() {
               <Input
                 type="search"
                 placeholder="Search..."
-                className="pl-8 sm:w-[200px] md:w-[200px] lg:w-[300px]"
+                className="pl-8 sm:w-[200px] md:w-[200px] lg:w-[300px] bg-primary-foreground/10 text-primary-foreground placeholder:text-primary-foreground/60 border-primary-foreground/20 focus:bg-primary-foreground/20"
               />
             </div>
           </form>
           <ThemeToggle />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="relative rounded-full" onClick={handleNotificationClick}>
+              <Button variant="ghost" size="icon" className="relative rounded-full hover:bg-primary-foreground/10" onClick={handleNotificationClick}>
                 <Bell className="h-5 w-5" />
                 {hasNotification && (
                   <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500"></span>
@@ -107,7 +107,7 @@ export function Header() {
 
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="secondary" size="icon" className="rounded-full">
+              <Button variant="ghost" size="icon" className="rounded-full hover:bg-primary-foreground/10">
                 <Avatar>
                   <AvatarImage src={user.avatar} alt={`@${user.name}`} data-ai-hint="woman smiling" />
                   <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
