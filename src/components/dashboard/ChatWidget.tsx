@@ -16,7 +16,7 @@ export function ChatWidget() {
   const toggleChat = () => setIsOpen(!isOpen);
 
   return (
-    <div className="fixed bottom-0 right-6 z-50 flex items-center gap-3">
+    <div className="fixed bottom-4 right-6 z-50 flex items-end gap-3">
       {/* Welcome Bubble */}
       {!isOpen && (
         <motion.div
@@ -25,17 +25,19 @@ export function ChatWidget() {
           transition={{ duration: 0.4, ease: 'easeOut' }}
           className="relative group"
         >
-          <div className="rounded-xl border border-violet-300/50 bg-violet-200/50 p-4 text-sm font-medium text-violet-900 shadow-lg backdrop-blur-md">
-            <div className="flex items-center gap-1.5">
-                <span>Hey Alex, Need a hand??</span>
+          <button onClick={toggleChat} className="block w-full text-left">
+            <div className="rounded-xl border border-violet-300/50 bg-violet-200/50 p-4 text-sm font-medium text-violet-900 shadow-lg backdrop-blur-md">
+              <div className="flex items-center gap-1.5">
+                  <span>Hey Alex, Need a hand??</span>
+              </div>
             </div>
-          </div>
-          {/* Rightward pointing tail */}
-          <div className="absolute top-1/2 right-[-7px] h-4 w-4 -translate-y-1/2 rotate-45 transform rounded-sm border-b border-r border-violet-300/50 bg-violet-200/50 backdrop-blur-md"></div>
+            {/* Rightward pointing tail */}
+            <div className="absolute top-1/2 right-[-7px] h-4 w-4 -translate-y-1/2 rotate-45 transform rounded-sm border-b border-r border-violet-300/50 bg-violet-200/50 backdrop-blur-md"></div>
+          </button>
         </motion.div>
       )}
 
-      {/* Chat Icon */}
+      {/* Chat Icon - Now only shows when chat is open and acts as a close button */}
       <motion.div
         layout
         transition={{ duration: 0.3, ease: 'easeOut' }}
@@ -61,7 +63,7 @@ export function ChatWidget() {
             transition={{ duration: 0.3 }}
             className="absolute bottom-0 right-0"
         >
-            <Card className="w-[350px] h-[500px] flex flex-col shadow-2xl rounded-2xl">
+            <Card className="w-[320px] h-[450px] flex flex-col shadow-2xl rounded-2xl">
               <CardHeader className="flex flex-row items-center justify-between bg-primary text-primary-foreground rounded-t-2xl p-4">
                 <CardTitle className="text-lg font-semibold flex items-center gap-3">
                   <Avatar className="h-8 w-8">
