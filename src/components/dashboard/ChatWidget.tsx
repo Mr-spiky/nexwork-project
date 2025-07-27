@@ -66,7 +66,7 @@ export function ChatWidget() {
                 <p>Can you show me the latest all-hands recording?</p>
               </div>
               <Avatar className="h-8 w-8 border">
-                 <AvatarImage src={user.avatar} alt={`@${user.name}`} data-ai-hint="user profile" />
+                 <AvatarImage src={user.avatar} alt={`@${user.name}`} data-ai-hint="woman smiling" />
                  <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
               </Avatar>
             </div>

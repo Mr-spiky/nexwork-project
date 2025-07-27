@@ -162,7 +162,7 @@ export function Header() {
             <DropdownMenuTrigger asChild>
               <Button variant="secondary" size="icon" className="rounded-full">
                 <Avatar>
-                  <AvatarImage src={user.avatar} alt={`@${user.name}`} data-ai-hint="user profile" />
+                  <AvatarImage src={user.avatar} alt={`@${user.name}`} data-ai-hint="woman smiling" />
                   <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
                 </Avatar>
                 <span className="sr-only">Toggle user menu</span>
@@ -188,7 +188,7 @@ export function Header() {
           <div className="space-y-6">
             <div className="flex items-center gap-4 py-4">
               <Avatar className="h-20 w-20">
-                <AvatarImage src={user.avatar} alt={`@${user.name}`} data-ai-hint="user profile" />
+                <AvatarImage src={user.avatar} alt={`@${user.name}`} data-ai-hint="woman smiling" />
                 <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
               </Avatar>
               <div>
