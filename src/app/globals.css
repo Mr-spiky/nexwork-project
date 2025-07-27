@@ -8,39 +8,39 @@ body {
 
 @layer base {
   :root {
-    --background: 251 100% 98%;
-    --foreground: 247 71% 15%;
+    --background: 250 100% 98%;
+    --foreground: 262 65% 42%;
     --card: 248 92% 96%;
-    --card-foreground: 247 71% 15%;
+    --card-foreground: 262 65% 42%;
     --popover: 248 92% 96%;
-    --popover-foreground: 247 71% 15%;
-    --primary: 255 79% 67%;
+    --popover-foreground: 262 65% 42%;
+    --primary: 254 77% 68%;
     --primary-foreground: 255 100% 98%;
-    --secondary: 250 84% 94%;
-    --secondary-foreground: 255 45% 42%;
-    --muted: 250 84% 94%;
-    --muted-foreground: 256 34% 50%;
-    --accent: 256 34% 50%;
-    --accent-foreground: 255 100% 98%;
+    --secondary: 256 94% 97%;
+    --secondary-foreground: 259 81% 60%;
+    --muted: 256 94% 97%;
+    --muted-foreground: 259 81% 60%;
+    --accent: 251 91% 94%;
+    --accent-foreground: 262 65% 42%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 0 0% 98%;
-    --border: 252 89% 84%;
-    --input: 252 89% 84%;
-    --ring: 255 79% 67%;
-    --chart-1: 255 79% 60%;
-    --chart-2: 255 79% 70%;
-    --chart-3: 255 79% 80%;
-    --chart-4: 255 79% 90%;
-    --chart-5: 255 79% 95%;
+    --border: 253 69% 84%;
+    --input: 253 69% 84%;
+    --ring: 254 77% 68%;
+    --chart-1: 254 77% 60%;
+    --chart-2: 254 77% 70%;
+    --chart-3: 254 77% 80%;
+    --chart-4: 254 77% 90%;
+    --chart-5: 254 77% 95%;
     --radius: 0.5rem;
-    --sidebar-background: 251 100% 98%;
-    --sidebar-foreground: 247 71% 15%;
-    --sidebar-primary: 255 79% 67%;
+    --sidebar-background: 250 100% 98%;
+    --sidebar-foreground: 262 65% 42%;
+    --sidebar-primary: 254 77% 68%;
     --sidebar-primary-foreground: 255 100% 98%;
-    --sidebar-accent: 250 84% 94%;
-    --sidebar-accent-foreground: 255 45% 42%;
-    --sidebar-border: 252 89% 84%;
-    --sidebar-ring: 255 79% 67%;
+    --sidebar-accent: 251 91% 94%;
+    --sidebar-accent-foreground: 262 65% 42%;
+    --sidebar-border: 253 69% 84%;
+    --sidebar-ring: 254 77% 68%;
   }
   .dark {
     --background: 222.2 84% 4.9%;
