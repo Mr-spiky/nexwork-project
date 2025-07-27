@@ -118,10 +118,10 @@ export function Header() {
           <div className="ml-auto flex-1 sm:flex-initial">
             <div className="hidden md:block">
               <h2 className="text-lg font-semibold text-white">{greeting}</h2>
-              <p className="text-sm text-muted-foreground">{currentDate}</p>
+              <p className="text-sm text-gray-200">{currentDate}</p>
             </div>
           </div>
-          <div className="hidden lg:flex items-center gap-2 text-muted-foreground">
+          <div className="hidden lg:flex items-center gap-2 text-gray-200">
             <CloudSun className="h-5 w-5" />
             <div className="flex flex-col">
               <span>72°F Sunny</span>
@@ -141,7 +141,7 @@ export function Header() {
           <ThemeToggle />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="rounded-full relative" onClick={handleNotificationClick}>
+              <Button variant="ghost" size="icon" className="rounded-full relative text-white hover:bg-white/20 hover:text-white" onClick={handleNotificationClick}>
                 <Bell className="h-5 w-5" />
                 {hasNotification && (
                   <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500"></span>
