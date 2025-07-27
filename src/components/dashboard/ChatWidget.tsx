@@ -16,12 +16,12 @@ export function ChatWidget() {
   const toggleChat = () => setIsOpen(!isOpen);
 
   return (
-    <div className="fixed bottom-6 right-6 z-50 flex items-end gap-3">
+    <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3">
       {/* Welcome Bubble */}
       {!isOpen && (
         <motion.div
-          initial={{ opacity: 0, scale: 0.9, y: 10 }}
-          animate={{ opacity: 1, scale: 1, y: 0 }}
+          initial={{ opacity: 0, scale: 0.9, x: 20 }}
+          animate={{ opacity: 1, scale: 1, x: 0 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
           className="relative group"
         >
@@ -33,7 +33,8 @@ export function ChatWidget() {
                 <span className="animate-typing-dots delay-300">.</span>
             </div>
           </div>
-          <div className="absolute -bottom-2 right-5 h-4 w-4 rotate-45 transform rounded-sm border-b border-r border-violet-300/50 bg-violet-200/50 backdrop-blur-md"></div>
+          {/* Rightward pointing tail */}
+          <div className="absolute top-1/2 right-[-7px] h-4 w-4 -translate-y-1/2 rotate-45 transform rounded-sm border-b border-r border-violet-300/50 bg-violet-200/50 backdrop-blur-md"></div>
         </motion.div>
       )}
 
