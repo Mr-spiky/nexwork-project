@@ -23,25 +23,18 @@ export function ChatWidget() {
           initial={{ opacity: 0, scale: 0.9, y: 10 }}
           animate={{ opacity: 1, scale: 1, y: 0 }}
           transition={{ duration: 0.4, ease: 'easeOut' }}
-          className="relative rounded-xl border border-violet-300/50 bg-violet-200/50 p-4 text-sm font-medium text-violet-900 shadow-lg backdrop-blur-md"
+          className="relative group"
         >
-          <div className="flex items-center gap-1.5">
-              <span>💬 Hey, Alex here... Need a hand?</span>
-          </div>
-          <div className="absolute -bottom-2 right-5 h-4 w-4 rotate-45 transform rounded-sm border-b border-r border-violet-300/50 bg-violet-200/50 backdrop-blur-md"></div>
-        </motion.div>
-      )}
-
-      {/* Chat Bubble + Button */}
-      {!isOpen && (
-          <Button
+          <button
             onClick={toggleChat}
-            className="rounded-full w-16 h-16 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg flex-shrink-0"
-            size="icon"
-            aria-label="Open chat"
+            className="rounded-xl border border-violet-300/50 bg-violet-200/50 p-4 text-sm font-medium text-violet-900 shadow-lg backdrop-blur-md hover:bg-violet-200/80 transition-colors"
           >
-            <MessageSquare className="h-8 w-8" />
-          </Button>
+            <div className="flex items-center gap-1.5">
+                <span>Hey Alex, need a hand?</span>
+            </div>
+          </button>
+          <div className="absolute -bottom-2 right-5 h-4 w-4 rotate-45 transform rounded-sm border-b border-r border-violet-300/50 bg-violet-200/50 backdrop-blur-md group-hover:bg-violet-200/80 transition-colors"></div>
+        </motion.div>
       )}
 
       {/* Chat Window */}
