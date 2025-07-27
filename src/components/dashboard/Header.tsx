@@ -2,7 +2,6 @@
 'use client';
 import {
   Bell,
-  CloudSun,
   Menu,
   Mountain,
   Search,
@@ -51,31 +50,12 @@ const notifications = [
 ];
 
 export function Header() {
-  const [currentDate, setCurrentDate] = useState('');
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [hasNotification, setHasNotification] = useState(true);
   const [notification, setNotification] = useState('');
-  const [greeting, setGreeting] = useState('');
 
   useEffect(() => {
-    const date = new Date();
-    const options: Intl.DateTimeFormatOptions = {
-      weekday: 'long',
-      year: 'numeric',
-      month: 'long',
-      day: 'numeric',
-    };
-    setCurrentDate(date.toLocaleDateString('en-US', options));
     setNotification(notifications[Math.floor(Math.random() * notifications.length)]);
-
-    const hours = date.getHours();
-    if (hours < 12) {
-      setGreeting(`Good Morning, ${user.name}!`);
-    } else if (hours < 18) {
-      setGreeting(`Good Afternoon, ${user.name}!`);
-    } else {
-      setGreeting(`Good Evening, ${user.name}!`);
-    }
   }, []);
 
   const handleNotificationClick = () => {
@@ -84,11 +64,11 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-[#5B21B6] dark:bg-background px-4 md:px-6">
+      <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-[#5B21B6] px-4 dark:bg-background md:px-6">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <a
             href="#"
-            className="flex items-center gap-2 text-lg font-semibold md:text-base text-white dark:text-foreground"
+            className="flex items-center gap-2 text-lg font-semibold text-white dark:text-foreground md:text-base"
           >
             <Mountain className="h-6 w-6" />
             <span className="font-bold">NexWork</span>
@@ -115,19 +95,6 @@ export function Header() {
           </SheetContent>
         </Sheet>
         <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-          <div className="ml-auto flex-1 sm:flex-initial">
-            <div className="hidden md:block">
-              <h2 className="text-lg font-semibold text-white dark:text-foreground">{greeting}</h2>
-              <p className="text-sm text-gray-200 dark:text-muted-foreground">{currentDate}</p>
-            </div>
-          </div>
-          <div className="hidden lg:flex items-center gap-2 text-gray-200 dark:text-muted-foreground">
-            <CloudSun className="h-5 w-5" />
-            <div className="flex flex-col">
-              <span>72°F Sunny</span>
-              <span className="text-xs">It’s sunny today — perfect for a quick walk!</span>
-            </div>
-          </div>
           <form className="ml-auto flex-1 sm:flex-initial">
             <div className="relative">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
@@ -141,7 +108,7 @@ export function Header() {
           <ThemeToggle />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="rounded-full relative text-white dark:text-foreground hover:bg-white/20 hover:text-white dark:hover:bg-accent dark:hover:text-accent-foreground" onClick={handleNotificationClick}>
+              <Button variant="ghost" size="icon" className="relative rounded-full text-white hover:bg-white/20 hover:text-white dark:text-foreground dark:hover:bg-accent dark:hover:text-accent-foreground" onClick={handleNotificationClick}>
                 <Bell className="h-5 w-5" />
                 {hasNotification && (
                   <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500"></span>
