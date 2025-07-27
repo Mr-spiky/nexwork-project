@@ -1,3 +1,4 @@
+
 import { Header } from '@/components/dashboard/Header';
 import { TodaysMeetings } from '@/components/dashboard/TodaysMeetings';
 import { CompanyNews } from '@/components/dashboard/CompanyNews';
@@ -7,9 +8,6 @@ import { UpcomingEvents } from '@/components/dashboard/UpcomingEvents';
 import { WellnessCorner } from '@/components/dashboard/WellnessCorner';
 import { QuickPoll } from '@/components/dashboard/QuickPoll';
 import { Footer } from '@/components/dashboard/Footer';
-import { SmartSuggestions } from '@/components/dashboard/SmartSuggestions';
-import { ChatWidget } from '@/components/dashboard/ChatWidget';
-import { meetings } from '@/lib/data';
 
 export default function Home() {
   return (
@@ -18,7 +16,6 @@ export default function Home() {
       <main className="flex-1 p-4 sm:p-6">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <div className="lg:col-span-2 space-y-6">
-            <SmartSuggestions meetingCount={meetings.length} />
             <TodaysMeetings />
             <CompanyNews />
             <UpcomingEvents />
@@ -32,7 +29,6 @@ export default function Home() {
         </div>
       </main>
       <Footer />
-      <ChatWidget />
     </div>
   );
 }
