@@ -58,7 +58,7 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 flex h-16 items-center justify-between gap-4 border-b bg-card px-6 sm:px-8">
+      <header className="sticky top-0 z-30 grid h-16 grid-cols-3 items-center gap-4 border-b bg-card px-6 sm:px-8">
         <div className="flex items-center gap-4">
           <a
               href="#"
@@ -67,13 +67,14 @@ export function Header() {
               <Mountain className="h-6 w-6" />
               <span className="sr-only sm:not-sr-only">NexWork</span>
           </a>
-          <div className="flex flex-col items-start">
-              <h1 className="text-base font-bold text-foreground whitespace-nowrap">Good Morning, Alex!</h1>
-              <p className="text-xs text-muted-foreground whitespace-nowrap">{currentDate}</p>
-          </div>
+        </div>
+        
+        <div className="flex flex-col items-center text-center">
+            <h1 className="text-base font-bold text-foreground whitespace-nowrap">Good Morning, Alex!</h1>
+            <p className="text-xs text-muted-foreground whitespace-nowrap">{currentDate}</p>
         </div>
 
-        <div className="flex flex-1 items-center gap-4 md:ml-auto justify-end">
+        <div className="flex flex-1 items-center gap-4 justify-end">
           <form className="flex-initial ml-auto hidden sm:block">
             <div className="relative">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
