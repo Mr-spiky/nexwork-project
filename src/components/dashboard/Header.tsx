@@ -66,13 +66,13 @@ export function Header() {
             <Mountain className="h-6 w-6" />
             <span>NexWork</span>
         </a>
-        <div className="hidden md:flex flex-col items-start ml-6">
-            <h1 className="text-xl font-bold text-foreground">Good Morning, Alex!</h1>
-            <p className="text-sm text-muted-foreground">{currentDate}</p>
+        <div className="flex flex-col items-start ml-6">
+            <h1 className="text-lg font-bold text-foreground">Good Morning, Alex!</h1>
+            <p className="text-xs text-muted-foreground">{currentDate}</p>
         </div>
 
         <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4 justify-end">
-          <form className="flex-initial">
+          <form className="flex-initial ml-auto">
             <div className="relative">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
