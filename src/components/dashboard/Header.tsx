@@ -84,11 +84,11 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-[#5B21B6] px-4 md:px-6">
+      <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-[#5B21B6] dark:bg-background px-4 md:px-6">
         <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
           <a
             href="#"
-            className="flex items-center gap-2 text-lg font-semibold md:text-base text-white"
+            className="flex items-center gap-2 text-lg font-semibold md:text-base text-white dark:text-foreground"
           >
             <Mountain className="h-6 w-6" />
             <span className="font-bold">NexWork</span>
@@ -117,11 +117,11 @@ export function Header() {
         <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
           <div className="ml-auto flex-1 sm:flex-initial">
             <div className="hidden md:block">
-              <h2 className="text-lg font-semibold text-white">{greeting}</h2>
-              <p className="text-sm text-gray-200">{currentDate}</p>
+              <h2 className="text-lg font-semibold text-white dark:text-foreground">{greeting}</h2>
+              <p className="text-sm text-gray-200 dark:text-muted-foreground">{currentDate}</p>
             </div>
           </div>
-          <div className="hidden lg:flex items-center gap-2 text-gray-200">
+          <div className="hidden lg:flex items-center gap-2 text-gray-200 dark:text-muted-foreground">
             <CloudSun className="h-5 w-5" />
             <div className="flex flex-col">
               <span>72°F Sunny</span>
@@ -141,7 +141,7 @@ export function Header() {
           <ThemeToggle />
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="rounded-full relative text-white hover:bg-white/20 hover:text-white" onClick={handleNotificationClick}>
+              <Button variant="ghost" size="icon" className="rounded-full relative text-white dark:text-foreground hover:bg-white/20 hover:text-white dark:hover:bg-accent dark:hover:text-accent-foreground" onClick={handleNotificationClick}>
                 <Bell className="h-5 w-5" />
                 {hasNotification && (
                   <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500"></span>
