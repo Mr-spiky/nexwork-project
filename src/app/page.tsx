@@ -8,6 +8,7 @@ import { UpcomingEvents } from '@/components/dashboard/UpcomingEvents';
 import { WellnessCorner } from '@/components/dashboard/WellnessCorner';
 import { QuickPoll } from '@/components/dashboard/QuickPoll';
 import { Footer } from '@/components/dashboard/Footer';
+import { ChatWidget } from '@/components/dashboard/ChatWidget';
 
 export default function Home() {
   return (
@@ -29,6 +30,7 @@ export default function Home() {
         </div>
       </main>
       <Footer />
+      <ChatWidget />
     </div>
   );
 }
