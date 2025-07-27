@@ -26,8 +26,8 @@ export function CompanyNews() {
       </CardHeader>
       <CardContent className="grid gap-8">
         {news.map((article) => (
-          <div key={article.id} className="grid grid-cols-1 md:grid-cols-3 gap-4 group">
-            <div className="overflow-hidden rounded-lg md:col-span-1">
+          <div key={article.id} className="flex flex-col md:flex-row gap-6 group">
+            <div className="overflow-hidden rounded-lg md:w-1/3 flex-shrink-0">
               <Image
                 alt={article.title}
                 className="aspect-video w-full object-cover transition-transform group-hover:scale-105"
@@ -37,7 +37,7 @@ export function CompanyNews() {
                 width="400"
               />
             </div>
-            <div className="md:col-span-2 flex flex-col justify-between">
+            <div className="flex flex-col justify-between">
               <div>
                 <h3 className="text-lg font-semibold">{article.title}</h3>
                 <p className="text-sm text-muted-foreground mt-1">{article.summary}</p>
