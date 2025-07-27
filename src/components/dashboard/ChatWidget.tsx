@@ -25,18 +25,33 @@ export function ChatWidget() {
           transition={{ duration: 0.4, ease: 'easeOut' }}
           className="relative group"
         >
-          <button
-            onClick={toggleChat}
-            className="rounded-xl border border-violet-300/50 bg-violet-200/50 p-4 text-sm font-medium text-violet-900 shadow-lg backdrop-blur-md hover:bg-violet-200/80 transition-colors"
-          >
+          <div className="rounded-xl border border-violet-300/50 bg-violet-200/50 p-4 text-sm font-medium text-violet-900 shadow-lg backdrop-blur-md">
             <div className="flex items-center gap-1.5">
-                <span>Hey Alex, need a hand?</span>
+                <span>Hey, Alex here...</span>
+                <span className="animate-typing-dots">.</span>
+                <span className="animate-typing-dots delay-150">.</span>
+                <span className="animate-typing-dots delay-300">.</span>
             </div>
-          </button>
-          <div className="absolute -bottom-2 right-5 h-4 w-4 rotate-45 transform rounded-sm border-b border-r border-violet-300/50 bg-violet-200/50 backdrop-blur-md group-hover:bg-violet-200/80 transition-colors"></div>
+          </div>
+          <div className="absolute -bottom-2 right-5 h-4 w-4 rotate-45 transform rounded-sm border-b border-r border-violet-300/50 bg-violet-200/50 backdrop-blur-md"></div>
         </motion.div>
       )}
 
+      {/* Chat Icon */}
+      <motion.div
+        layout
+        transition={{ duration: 0.3, ease: 'easeOut' }}
+      >
+        <Button
+          onClick={toggleChat}
+          size="icon"
+          className="rounded-full w-14 h-14 bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-transform hover:scale-110"
+        >
+          {isOpen ? <X className="h-6 w-6" /> : <MessageSquare className="h-6 w-6" />}
+          <span className="sr-only">{isOpen ? 'Close Chat' : 'Open Chat'}</span>
+        </Button>
+      </motion.div>
+      
       {/* Chat Window */}
       {isOpen && (
         <motion.div
@@ -44,6 +59,7 @@ export function ChatWidget() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
+            className="absolute bottom-24 right-0"
         >
             <Card className="w-[350px] h-[500px] flex flex-col shadow-2xl rounded-2xl">
               <CardHeader className="flex flex-row items-center justify-between bg-primary text-primary-foreground rounded-t-2xl p-4">
