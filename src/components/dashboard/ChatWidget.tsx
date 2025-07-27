@@ -45,7 +45,7 @@ export function ChatWidget() {
                 </Avatar>
                 Alex – AI Assistant
             </CardTitle>
-            <Button variant="ghost" size="icon" onClick={toggleChat} className="text-primary-foreground hover:bg-primary/80 h-8 w-8 rounded-full">
+            <Button variant="ghost" size="icon" onClick={toggleChat} className="text-primary-foreground hover:bg-black/20 h-8 w-8 rounded-full">
               <X className="h-5 w-5" />
               <span className="sr-only">Close chat</span>
             </Button>
