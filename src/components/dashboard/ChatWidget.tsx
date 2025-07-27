@@ -27,10 +27,7 @@ export function ChatWidget() {
         >
           <div className="rounded-xl border border-violet-300/50 bg-violet-200/50 p-4 text-sm font-medium text-violet-900 shadow-lg backdrop-blur-md">
             <div className="flex items-center gap-1.5">
-                <span>Hey, Alex here...</span>
-                <span className="animate-typing-dots">.</span>
-                <span className="animate-typing-dots delay-150">.</span>
-                <span className="animate-typing-dots delay-300">.</span>
+                <span>Hey Alex, Need a hand??</span>
             </div>
           </div>
           {/* Rightward pointing tail */}
