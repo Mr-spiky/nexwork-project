@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { MessageSquare, X } from 'lucide-react';
-import { cn } from '@/lib/utils';
+import { motion } from 'framer-motion';
 import { user } from '@/lib/data';
 import { Avatar, AvatarFallback, AvatarImage } from '../ui/avatar';
 
@@ -19,19 +19,30 @@ export function ChatWidget() {
     <div className="fixed bottom-6 right-6 z-50">
       {/* Chat Bubble + Button */}
       {!isOpen && (
-        <div className="flex items-center gap-3">
-            <div className="bg-background shadow-lg rounded-lg p-3 text-sm text-foreground">
-              <p>Hey {user.name}, how can I help you today?</p>
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="flex items-center gap-3"
+        >
+          <div className="relative rounded-lg border border-violet-300/50 bg-violet-500/30 p-4 text-sm text-white shadow-lg backdrop-blur-md">
+            <p className="font-medium">Hey, Alex here...</p>
+            <p>Need a hand?</p>
+            <div className="absolute bottom-2 right-2 flex gap-0.5">
+                <span className="h-1 w-1 animate-[bounce_1s_infinite] rounded-full bg-white/70"></span>
+                <span className="h-1 w-1 animate-[bounce_1s_infinite_200ms] rounded-full bg-white/70"></span>
+                <span className="h-1 w-1 animate-[bounce_1s_infinite_400ms] rounded-full bg-white/70"></span>
             </div>
-            <Button
-              onClick={toggleChat}
-              className="rounded-full w-16 h-16 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg"
-              size="icon"
-              aria-label="Open chat"
-            >
-              <MessageSquare className="h-8 w-8" />
-            </Button>
-        </div>
+          </div>
+          <Button
+            onClick={toggleChat}
+            className="rounded-full w-16 h-16 bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg"
+            size="icon"
+            aria-label="Open chat"
+          >
+            <MessageSquare className="h-8 w-8" />
+          </Button>
+        </motion.div>
       )}
 
       {/* Chat Window */}
@@ -39,11 +50,11 @@ export function ChatWidget() {
         <Card className="w-[350px] h-[500px] flex flex-col shadow-2xl rounded-2xl">
           <CardHeader className="flex flex-row items-center justify-between bg-primary text-primary-foreground rounded-t-2xl p-4">
             <CardTitle className="text-lg font-semibold flex items-center gap-3">
-                <Avatar className="h-8 w-8">
-                    <AvatarImage src="https://placehold.co/100x100.png" alt="AI Assistant" data-ai-hint="bot avatar" />
-                    <AvatarFallback>AI</AvatarFallback>
-                </Avatar>
-                Alex – AI Assistant
+              <Avatar className="h-8 w-8">
+                <AvatarImage src="https://placehold.co/100x100.png" alt="AI Assistant" data-ai-hint="bot avatar" />
+                <AvatarFallback>AI</AvatarFallback>
+              </Avatar>
+              Alex – AI Assistant
             </CardTitle>
             <Button variant="ghost" size="icon" onClick={toggleChat} className="text-primary-foreground hover:bg-black/20 h-8 w-8 rounded-full">
               <X className="h-5 w-5" />
@@ -66,11 +77,11 @@ export function ChatWidget() {
                 <p>Can you show me the latest all-hands recording?</p>
               </div>
               <Avatar className="h-8 w-8 border">
-                 <AvatarImage src={user.avatar} alt={`@${user.name}`} data-ai-hint="woman smiling" />
-                 <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                <AvatarImage src={user.avatar} alt={`@${user.name}`} data-ai-hint="woman smiling" />
+                <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
               </Avatar>
             </div>
-             <div className="flex items-start gap-3">
+            <div className="flex items-start gap-3">
               <Avatar className="h-8 w-8 border">
                 <AvatarImage src="https://placehold.co/100x100.png" alt="AI Assistant" data-ai-hint="bot avatar" />
                 <AvatarFallback>AI</AvatarFallback>
