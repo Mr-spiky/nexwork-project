@@ -8,6 +8,7 @@ import {
   Mail,
   Briefcase,
   Users,
+  CloudSun,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -53,9 +54,12 @@ export function Header() {
   const [isProfileOpen, setIsProfileOpen] = useState(false);
   const [hasNotification, setHasNotification] = useState(true);
   const [notification, setNotification] = useState('');
+  const [currentDate, setCurrentDate] = useState('');
+  const [weather, setWeather] = useState('18°C');
 
   useEffect(() => {
     setNotification(notifications[Math.floor(Math.random() * notifications.length)]);
+    setCurrentDate(new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' }));
   }, []);
 
   const handleNotificationClick = () => {
@@ -64,87 +68,99 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-[#5B21B6] px-4 dark:bg-background md:px-6">
-        <nav className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
-          <a
-            href="#"
-            className="flex items-center gap-2 text-lg font-semibold text-white dark:text-foreground md:text-base"
-          >
-            <Mountain className="h-6 w-6" />
-            <span className="font-bold">NexWork</span>
-          </a>
-        </nav>
-        <Sheet>
-          <SheetTrigger asChild>
-            <Button variant="outline" size="icon" className="shrink-0 md:hidden">
-              <Menu className="h-5 w-5" />
-              <span className="sr-only">Toggle navigation menu</span>
-            </Button>
-          </SheetTrigger>
-          <SheetContent side="left">
-            <nav className="grid gap-6 text-lg font-medium">
-              <a
+      <header className="sticky top-0 z-30 flex h-24 flex-col justify-center border-b bg-[#5B21B6] px-4 dark:bg-background md:px-6">
+        <div className="flex items-center gap-4">
+            <div className="hidden flex-col gap-6 text-lg font-medium md:flex md:flex-row md:items-center md:gap-5 md:text-sm lg:gap-6">
+            <a
                 href="#"
-                className="flex items-center gap-2 text-lg font-semibold"
-              >
+                className="flex items-center gap-2 text-lg font-semibold text-white dark:text-foreground md:text-base"
+            >
                 <Mountain className="h-6 w-6" />
-                <span className="sr-only">NexWork</span>
-              </a>
-              {/* Mobile nav links can go here if needed */}
-            </nav>
-          </SheetContent>
-        </Sheet>
-        <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
-          <form className="ml-auto flex-1 sm:flex-initial">
-            <div className="relative">
-              <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-              <Input
-                type="search"
-                placeholder="Search..."
-                className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
-              />
+                <span className="font-bold">NexWork</span>
+            </a>
             </div>
-          </form>
-          <ThemeToggle />
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="relative rounded-full text-white hover:bg-white/20 hover:text-white dark:text-foreground dark:hover:bg-accent dark:hover:text-accent-foreground" onClick={handleNotificationClick}>
-                <Bell className="h-5 w-5" />
-                {hasNotification && (
-                  <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500"></span>
-                )}
-                <span className="sr-only">Toggle notifications</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>Notifications</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem className="flex flex-col items-start gap-2 whitespace-normal">
-                  <p className="font-medium">New Notification</p>
-                  <p className="text-sm text-muted-foreground">{notification}</p>
-              </DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+            <Sheet>
+            <SheetTrigger asChild>
+                <Button variant="outline" size="icon" className="shrink-0 md:hidden">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle navigation menu</span>
+                </Button>
+            </SheetTrigger>
+            <SheetContent side="left">
+                <nav className="grid gap-6 text-lg font-medium">
+                <a
+                    href="#"
+                    className="flex items-center gap-2 text-lg font-semibold"
+                >
+                    <Mountain className="h-6 w-6" />
+                    <span className="sr-only">NexWork</span>
+                </a>
+                {/* Mobile nav links can go here if needed */}
+                </nav>
+            </SheetContent>
+            </Sheet>
+            <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
+            <form className="ml-auto flex-1 sm:flex-initial">
+                <div className="relative">
+                <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
+                <Input
+                    type="search"
+                    placeholder="Search..."
+                    className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
+                />
+                </div>
+            </form>
+            <ThemeToggle />
+            <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                <Button variant="ghost" size="icon" className="relative rounded-full text-white hover:bg-white/20 hover:text-white dark:text-foreground dark:hover:bg-accent dark:hover:text-accent-foreground" onClick={handleNotificationClick}>
+                    <Bell className="h-5 w-5" />
+                    {hasNotification && (
+                    <span className="absolute top-1 right-1 h-2 w-2 rounded-full bg-red-500"></span>
+                    )}
+                    <span className="sr-only">Toggle notifications</span>
+                </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                <DropdownMenuLabel>Notifications</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem className="flex flex-col items-start gap-2 whitespace-normal">
+                    <p className="font-medium">New Notification</p>
+                    <p className="text-sm text-muted-foreground">{notification}</p>
+                </DropdownMenuItem>
+                </DropdownMenuContent>
+            </DropdownMenu>
 
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <Button variant="secondary" size="icon" className="rounded-full">
-                <Avatar>
-                  <AvatarImage src={user.avatar} alt={`@${user.name}`} data-ai-hint="woman smiling" />
-                  <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
-                </Avatar>
-                <span className="sr-only">Toggle user menu</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end">
-              <DropdownMenuLabel>My Account</DropdownMenuLabel>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem onSelect={() => setIsProfileOpen(true)}>Profile</DropdownMenuItem>
-              <DropdownMenuItem>Settings</DropdownMenuItem>
-              <DropdownMenuSeparator />
-              <DropdownMenuItem>Logout</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+            <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                <Button variant="secondary" size="icon" className="rounded-full">
+                    <Avatar>
+                    <AvatarImage src={user.avatar} alt={`@${user.name}`} data-ai-hint="woman smiling" />
+                    <AvatarFallback>{user.name.charAt(0)}</AvatarFallback>
+                    </Avatar>
+                    <span className="sr-only">Toggle user menu</span>
+                </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end">
+                <DropdownMenuLabel>My Account</DropdownMenuLabel>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem onSelect={() => setIsProfileOpen(true)}>Profile</DropdownMenuItem>
+                <DropdownMenuItem>Settings</DropdownMenuItem>
+                <DropdownMenuSeparator />
+                <DropdownMenuItem>Logout</DropdownMenuItem>
+                </DropdownMenuContent>
+            </DropdownMenu>
+            </div>
+        </div>
+        <div className="mt-4 flex items-center justify-between">
+            <h1 className="text-xl font-semibold text-white dark:text-foreground">Good morning, {user.name}!</h1>
+            <div className="hidden items-center gap-4 text-sm text-white dark:text-foreground md:flex">
+                <span>{currentDate}</span>
+                <div className="flex items-center gap-1">
+                    <CloudSun className="h-5 w-5" />
+                    <span>{weather}</span>
+                </div>
+            </div>
         </div>
       </header>
       <Dialog open={isProfileOpen} onOpenChange={setIsProfileOpen}>
