@@ -58,27 +58,29 @@ export function Header() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-card px-4 md:px-6">
-        <a
-            href="#"
-            className="flex items-center gap-2 text-lg font-semibold text-foreground"
-          >
-            <Mountain className="h-6 w-6" />
-            <span>NexWork</span>
-        </a>
-        <div className="flex flex-col items-start ml-6">
-            <h1 className="text-lg font-bold text-foreground">Good Morning, Alex!</h1>
-            <p className="text-xs text-muted-foreground">{currentDate}</p>
+      <header className="sticky top-0 z-30 flex h-16 items-center gap-4 border-b bg-card px-4 sm:px-6">
+        <div className="flex items-center gap-4">
+          <a
+              href="#"
+              className="flex items-center gap-2 text-lg font-semibold text-foreground"
+            >
+              <Mountain className="h-6 w-6" />
+              <span className="sr-only sm:not-sr-only">NexWork</span>
+          </a>
+          <div className="flex flex-col items-start">
+              <h1 className="text-base font-bold text-foreground whitespace-nowrap">Good Morning, Alex!</h1>
+              <p className="text-xs text-muted-foreground whitespace-nowrap">{currentDate}</p>
+          </div>
         </div>
 
-        <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4 justify-end">
-          <form className="flex-initial ml-auto">
+        <div className="flex flex-1 items-center gap-4 md:ml-auto justify-end">
+          <form className="flex-initial ml-auto hidden sm:block">
             <div className="relative">
               <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
               <Input
                 type="search"
                 placeholder="Search..."
-                className="pl-8 sm:w-[300px] md:w-[200px] lg:w-[300px]"
+                className="pl-8 sm:w-[200px] md:w-[200px] lg:w-[300px]"
               />
             </div>
           </form>
