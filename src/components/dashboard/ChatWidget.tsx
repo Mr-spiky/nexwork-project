@@ -40,14 +40,16 @@ export function ChatWidget() {
         layout
         transition={{ duration: 0.3, ease: 'easeOut' }}
       >
-        <Button
-          onClick={toggleChat}
-          size="icon"
-          className="rounded-full w-14 h-14 bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-transform hover:scale-110"
-        >
-          {isOpen ? <X className="h-6 w-6" /> : <MessageSquare className="h-6 w-6" />}
-          <span className="sr-only">{isOpen ? 'Close Chat' : 'Open Chat'}</span>
-        </Button>
+        {!isOpen && (
+            <Button
+            onClick={toggleChat}
+            size="icon"
+            className="rounded-full w-14 h-14 bg-primary text-primary-foreground shadow-lg hover:bg-primary/90 transition-transform hover:scale-110"
+            >
+            <MessageSquare className="h-6 w-6" />
+            <span className="sr-only">Open Chat</span>
+            </Button>
+        )}
       </motion.div>
       
       {/* Chat Window */}
