@@ -117,7 +117,7 @@ export function Header() {
         <div className="flex w-full items-center gap-4 md:ml-auto md:gap-2 lg:gap-4">
           <div className="ml-auto flex-1 sm:flex-initial">
             <div className="hidden md:block">
-              <h2 className="text-lg font-semibold">{greeting}</h2>
+              <h2 className="text-lg font-semibold text-white">{greeting}</h2>
               <p className="text-sm text-muted-foreground">{currentDate}</p>
             </div>
           </div>
