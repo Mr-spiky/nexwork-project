@@ -20,7 +20,7 @@ export function TeamSpotlight() {
           <AvatarFallback>{teamSpotlight.name.charAt(0)}</AvatarFallback>
         </Avatar>
         <h3 className="text-lg font-semibold">{teamSpotlight.name}</h3>
-        <p className="text-sm text-primary">{teamSpotlight.role}</p>
+        <p className="text-sm text-primary text-white">{teamSpotlight.role}</p>
 
         <div className="flex flex-wrap justify-center gap-2 my-3">
             {teamSpotlight.birthday && (

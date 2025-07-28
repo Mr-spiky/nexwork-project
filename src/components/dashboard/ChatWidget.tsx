@@ -16,7 +16,7 @@ export function ChatWidget() {
   const toggleChat = () => setIsOpen(!isOpen);
 
   return (
-    <div className="fixed bottom-4 right-6 z-50 flex items-end gap-3">
+    <div className="fixed   bottom-4 right-6 z-50 flex items-end gap-3">
       {/* Welcome Bubble */}
       {!isOpen && (
         <motion.div
@@ -26,7 +26,7 @@ export function ChatWidget() {
           className="relative group"
         >
           <button onClick={toggleChat} className="block w-full text-left">
-            <div className="rounded-xl border border-violet-300/50 bg-violet-200/50 p-4 text-sm font-medium text-violet-900 shadow-lg backdrop-blur-md">
+            <div className="rounded-xl border border-violet-300/50 bg-violet-200/50 p-4 text-sm font-medium text-violet-900 shadow-lg backdrop-blur-md ">
               <div className="flex items-center gap-1.5">
                   <span>Hey Alex, Need a hand??</span>
               </div>
@@ -63,7 +63,7 @@ export function ChatWidget() {
             transition={{ duration: 0.3 }}
             className="absolute bottom-0 right-0"
         >
-            <Card className="w-[320px] h-[450px] flex flex-col shadow-2xl rounded-2xl">
+            <Card className="w-[420px] h-[650px] flex flex-col shadow-2xl rounded-2xl">
               <CardHeader className="flex flex-row items-center justify-between bg-primary text-primary-foreground rounded-t-2xl p-4">
                 <CardTitle className="text-lg font-semibold flex items-center gap-3">
                   <Avatar className="h-8 w-8">

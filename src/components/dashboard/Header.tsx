@@ -59,7 +59,7 @@ export function Header() {
   return (
     <>
       <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b bg-primary text-primary-foreground px-6 sm:px-8">
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-4  w-1/3 justify-between">
           <a
               href="#"
               className="flex items-center gap-2 text-lg font-semibold"
@@ -68,7 +68,7 @@ export function Header() {
               <span className="sr-only sm:not-sr-only">NexWork</span>
           </a>
           <div className="flex flex-col items-start">
-            <h1 className="text-base font-bold whitespace-nowrap">Good Morning, Alex!</h1>
+            <h1 className="text-base font-bold text-xl whitespace-nowrap">Good Morning, Spiky!</h1>
             <p className="text-xs whitespace-nowrap">{currentDate}</p>
           </div>
         </div>

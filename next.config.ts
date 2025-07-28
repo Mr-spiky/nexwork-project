@@ -1,7 +1,6 @@
-import type {NextConfig} from 'next';
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
-  /* config options here */
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -12,9 +11,13 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: 'placehold.co',
-        port: '',
+        hostname: 'www.stateofflux.co.uk',
         pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'fpt.com',  // ✅ added this domain
+        pathname: '/**',                     // ✅ allow all image paths
       },
     ],
   },
